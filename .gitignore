@@ -1,0 +1,4 @@
+*.html
+*.json
+read_jsonfile_demo.py
+__pycache__/*
