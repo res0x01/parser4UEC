@@ -5,8 +5,8 @@ output_filename = "output"
 
 colum_dicts = {"担当教員": "teacher", "科目": "name", "時間割コード": "class_code"}
 
-weekdays_ja = {"月","火","水","木","金"}
-weekdays_en = {"mon", "tue", "wed", "thu", "fri"}
+weekdays_ja = ["月","火","水","木","金"]
+weekdays_en = ["mon", "tue", "wed", "thu", "fri"]
 weekdays_dict = dict(zip(weekdays_ja, weekdays_en))
 
 
