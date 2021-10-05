@@ -38,4 +38,4 @@ def html_to_json(input_filename: str, output_filename: str):
 
 
 if __name__== "__main__":
-    html_to_json(output_filename, )
+    html_to_json(input_filename, output_filename)
