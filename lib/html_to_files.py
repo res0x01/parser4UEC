@@ -46,12 +46,12 @@ def html_to_files(input_filename: str, output_filename: str):
 
     def save_to_csv():
         print("saving to csv...")
-        with open(f"csv/{output_filename}.csv", "w", encoding="utf-8") as f:
+        with open(f"{output_filename}.csv", "w", encoding="utf-8") as f:
             df.to_csv(f)
     
     def save_to_json():
         print("saving to json...")
-        with open(f"json/{output_filename}.json", "w", encoding="utf-8") as f:
+        with open(f"{output_filename}.json", "w", encoding="utf-8") as f:
             df.to_json(f, orient="records", force_ascii=False, double_precision=0)
     save_to_csv()
     save_to_json()
