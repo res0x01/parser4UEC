@@ -12,7 +12,7 @@ weekdays_dict = dict(zip(weekdays_ja, weekdays_en))
 
 parameters = ["type", "google_classroom", "webclass", "link", "link2", "zoom", "zoom_id", "zoom_password", "id", "password"]
 
-def html_to_json(input_filename: str, output_filename: str):
+def html_to_files(input_filename: str, output_filename: str):
     df = pd.read_html(f"{input_filename}.html")
 
     df = df[6]
@@ -57,4 +57,4 @@ def html_to_json(input_filename: str, output_filename: str):
     save_to_json()
 
 if __name__== "__main__":
-    html_to_json(input_filename, output_filename)
+    html_to_files(input_filename, output_filename)
