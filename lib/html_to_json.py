@@ -13,7 +13,6 @@ weekdays_dict = dict(zip(weekdays_ja, weekdays_en))
 parameters = ["type", "google_classroom", "webclass", "link", "link2", "zoom", "zoom_id", "zoom_password", "id", "password"]
 
 def html_to_json(input_filename: str, output_filename: str):
-    
     df = pd.read_html(f"{input_filename}.html")
 
     df = df[6]
@@ -25,6 +24,7 @@ def html_to_json(input_filename: str, output_filename: str):
 
     # extracts each date and class 
     # TODO: support cases like "月3，月4"
+
     df["day_of_week"] = df["曜日・時限"].str[0]
     df["曜日・時限"] = df['曜日・時限'].str.replace("(,.他.)|(,)", '', regex=True)
     df["period"] = df["曜日・時限"].str[1]
@@ -38,6 +38,12 @@ def html_to_json(input_filename: str, output_filename: str):
     # change language
     for ja, en in weekdays_dict.items():
         df["day_of_week"] = df['day_of_week'].str.replace(ja, en, regex=False)
+    
+    # drops unsed columns
+    df = df.drop(columns=["学期", "開講", "曜日・時限"])
+    
+    print("dataframe ready")
+
 
     # drops unsed columns
     df = df.drop(columns=["学期", "開講", "曜日・時限"])
@@ -51,9 +57,11 @@ def html_to_json(input_filename: str, output_filename: str):
     
     def save_to_json():
         print("saving to json...")
+
         with open(f"{output_filename}.json", "w", encoding="utf-8") as f:
             df.to_json(f, orient="records", force_ascii=False, double_precision=0)
     
+
     save_to_csv()
     save_to_json()
 
